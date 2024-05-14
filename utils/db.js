@@ -12,7 +12,6 @@ class DBClient {
       if (err) {
         throw err;
       }
-      console.log('Connected to MongoDB');
       this.client = client
       this.isClientConnected = true;
     });
