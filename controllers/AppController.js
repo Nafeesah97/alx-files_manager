@@ -15,5 +15,3 @@ export default class AppController {
     });
   }
 };
-
-module.exports = { getStatus, getStats };
