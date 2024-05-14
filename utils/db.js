@@ -30,5 +30,5 @@ class DBClient {
 }
 
 const dbClient = new DBClient();
-await dbClient.connect();
+dbClient.connect();
 export default dbClient;
