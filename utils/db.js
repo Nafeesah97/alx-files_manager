@@ -8,7 +8,10 @@ class DBClient {
     const url = `mongodb://${host}:${port}/${db}`;
 
     this.client = new MongoClient(url, { useUnifiedTopology: true });
-    this.client.connect();
+  }
+
+  async connect() {
+    await this.client.connect();
   }
 
   isAlive() {
@@ -27,4 +30,5 @@ class DBClient {
 }
 
 const dbClient = new DBClient();
+await dbClient.connect();
 export default dbClient;
