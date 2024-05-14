@@ -1,8 +1,8 @@
-import { Router } from 'express';
-const router = Router();
-import { getStatus, getStats } from '../controllers/AppController';
+const express = require('express');
+const router = express.Router();
+const AppController = require('../controllers/AppController');
 
-router.get('/status', getStatus);
-router.get('/stats', getStats);
+router.get('/status', AppController.getStatus);
+router.get('/stats', AppController.getStats);
 
-export default router;
+module.exports = router;
