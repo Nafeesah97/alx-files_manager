@@ -1,6 +1,5 @@
 import MongoClient from 'mongodb';
 
-
 class DBClient {
   constructor() {
     const host = process.env.DB_HOST || 'localhost';
@@ -13,7 +12,7 @@ class DBClient {
         throw err;
       }
       console.log('Connected to MongoDB');
-      this.client = client
+      this.client = client;
       this.isClientConnected = true;
     });
     this.isClientConnected = false;
