@@ -1,16 +1,19 @@
+/* eslint-disable import/no-named-as-default */
 import redisClient from '../utils/redis';
 import dbClient from '../utils/db';
 
-exports.getStatus = async (req, res) => {
-  const redisAlive = await redisClient.isAlive();
-  const dbAlive = await dbClient.isAlive(); // Replace with your actual DB health check
-  
-  res.status(200).json({ redis: redisAlive, db: dbAlive });
-};
-  
-exports.getStats = async (req, res) => {
-  const userCount = await dbClient.nbUsers();
-  const fileCount = await dbClient.nbFiles();
-  
-  res.status(200).json({ users: userCount, files: fileCount });
-};
+export default class AppController {
+  static getStatus(req, res) {
+    res.status(200).json({
+      redis: redisClient.isAlive(),
+      db: dbClient.isAlive(),
+    });
+  }
+
+  static getStats(req, res) {
+    Promise.all([dbClient.nbUsers(), dbClient.nbFiles()])
+      .then(([usersCount, filesCount]) => {
+        res.status(200).json({ users: usersCount, files: filesCount });
+      });
+  }
+}
