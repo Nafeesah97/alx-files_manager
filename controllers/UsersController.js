@@ -26,3 +26,5 @@ const UsersController = {
     return res.status(201).json({ email, id: userId });
   }
 }
+
+export default UsersController;
