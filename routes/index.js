@@ -1,8 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-const AppController = require('../controllers/AppController');
-const UsersController = require('../controllers/UsersController');
+const AppController = require('../controllers/AppController').default;
+const UsersController = require('../controllers/UsersController').default;
 
 router.get('/status', AppController.getStatus);
 router.get('/stats', AppController.getStats);
