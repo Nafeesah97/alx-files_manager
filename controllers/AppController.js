@@ -13,7 +13,7 @@ const AppController = {
     const usersCount = dbClient.nbUsers();
     const filesCount = dbClient.nbFiles();
     res.status(200).json({ users: usersCount, files: filesCount });
-  }
+  },
 };
 
 export default AppController;
